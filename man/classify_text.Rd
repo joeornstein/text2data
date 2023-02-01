@@ -8,6 +8,7 @@ classify_text(
   text,
   instructions =
     "Classify the sentiment of the following tweet as Positive, Negative, or Neutral.",
+  examples = NULL,
   model = "text-davinci-003"
 )
 }
@@ -15,6 +16,8 @@ classify_text(
 \item{text}{The text to be classified}
 
 \item{instructions}{Instructions to be included in the GPT-3 prompt (format them like you would format instructions to a human research assistant).}
+
+\item{examples}{A dataframe of "few-shot" examples. Must include one column called 'text' with the example text(s) and another column called "label" with the correct label.}
 
 \item{model}{Which model variant of GPT-3 to use. Defaults to 'text-davinci-003'}
 }

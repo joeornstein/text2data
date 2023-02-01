@@ -11,7 +11,7 @@ def gpt3_classify(text, instructions, mod):
   
   response = openai.Completion.create(
     engine = mod,
-    prompt = instructions + "\n---\n" + text + "\n---\nClassification: ",
+    prompt = instructions + "\n---\n" + text + "\nClassification: ",
     max_tokens = 1, 
     logprobs = 5,
     temperature = 0
