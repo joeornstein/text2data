@@ -13,13 +13,16 @@
 #'
 #' @examples
 #' classify_text(text = 'I am so very sad today',
-#'               instructions = 'Classify the sentiment of the following string of text as either Positive, Negative, or Neutral.')
+#'               instructions =
+#'               'Classify the sentiment of the following string of text as either Positive, Negative, or Neutral.')
 classify_text <- function(text,
                           instructions = 'Classify the sentiment of the following tweet as Positive, Negative, or Neutral.',
                           examples = NULL,
                           model = 'text-davinci-003',
                           openai_api_key = Sys.getenv('OPENAI_API_KEY')) {
 
+
+  openai <- reticulate::import("openai")
 
   if(is.null(openai_api_key)){
     stop("No API key detected in system environment. You can enter it manually using 'the openai_api_key' argument.")

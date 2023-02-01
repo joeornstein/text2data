@@ -1,11 +1,7 @@
-# global reference to Python packages we need (will be initialized in .onLoad)
-#os <- NULL
+# global reference to openai (will be initialized in .onLoad)
 openai <- NULL
-#math <- NULL
 
 .onLoad <- function(libname, pkgname) {
-  # use superassignment to update global reference to packages
-  #os <<- reticulate::import("os", delay_load = TRUE)
+  # use superassignment to update global reference to openai
   openai <<- reticulate::import("openai", delay_load = TRUE)
-  #math <<- reticulate::import("math", delay_load = TRUE)
 }

@@ -32,5 +32,6 @@ Constructs a GPT-3 prompt to classify a string of text according to user instruc
 }
 \examples{
 classify_text(text = 'I am so very sad today',
-              instructions = 'Classify the sentiment of the following string of text as either Positive, Negative, or Neutral.')
+              instructions =
+              'Classify the sentiment of the following string of text as either Positive, Negative, or Neutral.')
 }
