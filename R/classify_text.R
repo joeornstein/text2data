@@ -11,7 +11,8 @@
 #'
 #' @examples
 #' classify_text(text = 'I am so very sad today',
-#'               instructions = 'Classify the sentiment of the following string of text as either Positive, Negative, or Neutral.')
+#'               instructions = 'Classify the sentiment of the following string of
+#'                               text as either Positive, Negative, or Neutral.')
 classify_text <- function(text,
                           instructions = 'Classify the sentiment of the following tweet as Positive, Negative, or Neutral.',
                           model = 'text-davinci-003') {
