@@ -9,7 +9,8 @@ classify_text(
   instructions =
     "Classify the sentiment of the following tweet as Positive, Negative, or Neutral.",
   examples = NULL,
-  model = "text-davinci-003"
+  model = "text-davinci-003",
+  openai_api_key = Sys.getenv("OPENAI_API_KEY")
 )
 }
 \arguments{
@@ -17,9 +18,11 @@ classify_text(
 
 \item{instructions}{Instructions to be included in the GPT-3 prompt (format them like you would format instructions to a human research assistant).}
 
-\item{examples}{A dataframe of "few-shot" examples. Must include one column called 'text' with the example text(s) and another column called "label" with the correct label.}
+\item{examples}{A dataframe of "few-shot" examples. Must include one column called 'text' with the example text(s) and another column called "label" with the correct label(s).}
 
 \item{model}{Which model variant of GPT-3 to use. Defaults to 'text-davinci-003'}
+
+\item{openai_api_key}{Your API key. By default, looks for a system environment variable called "OPENAI_API_KEY" (recommended option). Otherwise, it will prompt you to enter the API key as an argument.}
 }
 \value{
 A dataframe with 5 classifications and their probabilities as assigned by GPT-3
@@ -29,6 +32,5 @@ Constructs a GPT-3 prompt to classify a string of text according to user instruc
 }
 \examples{
 classify_text(text = 'I am so very sad today',
-              instructions = 'Classify the sentiment of the following string of
-                              text as either Positive, Negative, or Neutral.')
+              instructions = 'Classify the sentiment of the following string of text as either Positive, Negative, or Neutral.')
 }
