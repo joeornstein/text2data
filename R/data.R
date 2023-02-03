@@ -24,6 +24,7 @@
 #' data(scotus_tweets)
 "scotus_tweets"
 
+
 #' Labelled Example Tweets About The Supreme Court of the United States
 #'
 #' This dataset contains 5 example tweets referencing the Supreme Court
@@ -32,7 +33,7 @@
 #'
 #' @docType data
 #'
-#' @usage data(scotus_tweet_examples)
+#' @usage data(scotus_tweets_examples)
 #'
 #' @format
 #' A data frame with 5 rows and 2 columns:
@@ -44,4 +45,4 @@
 #' @keywords datasets
 #'
 #' @references Ornstein et al. (2022). "How To Train Your Stochastic Parrot"
-"scotus_tweet_examples"
+"scotus_tweets_examples"
