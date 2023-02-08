@@ -1,3 +1,22 @@
+#' Create Dataframe From Text
+#'
+#' @description Constructs a GPT-3 prompt to parse data from unstructured text according to the user's instructions.
+#'
+#' @param text The text to be converted into a tidy dataframe
+#' @param instructions Instructions to be included in the GPT-3 prompt (format them like you would format instructions to a human research assistant, in as much detail as possible).
+#' @param var_descriptions A list of descriptions for each variable in the dataframe.
+#' @param col_names Optional: A list of column names for the resulting dataframe. If not provided, var_descriptions will be used for column names.
+#' @param model Which model variant of GPT-3 to use. Defaults to 'text-davinci-003'
+#' @param openai_api_key Your API key. By default, looks for a system environment variable called "OPENAI_API_KEY" (recommended option). Otherwise, it will prompt you to enter the API key as an argument.
+#'
+#' @return A dataframe with a number of columns equal to `ncol(var_descriptions)`
+#' @export
+#'
+#' @examples
+#' parse_text(text = "John went to the store. Rosie ran errands at the mall.",
+#'            instructions = "Create a dataset from the following passage with the names of each character and the place they went.",
+#'            var_descriptions = c("Name of Character", "Where They Went"),
+#'            col_names = c('name', 'destination') )
 parse_text <- function(text,
                        instructions,
                        var_descriptions,
