@@ -24,9 +24,34 @@ parse_text <- function(text,
   # query the API
   response <- openai$Completion$create(
     engine = model,
-    prompt = paste0(instructions, "\n\n", text, "\n\n", paste0('| ', var_descriptions), " |\n|",
+    prompt = paste0(instructions, "\n\n", text, "\n\n", paste0('| ', var_descriptions, collapse = ''), " |\n|",
                     paste0( rep(' --- |', length(var_descriptions)), collapse = ''), "\n"),
     temperature = as.integer(0)
   )
+
+
+  output <- response$choices[[1]]$text
+
+  # convert the resulting table to a tidy dataframe
+  d <- readr::read_delim(
+    # paste an extra row, in case there's only one row.
+    paste0(output, '\n', paste(rep(
+      '|', length(var_descriptions) + 1
+    ), collapse = '')),
+    delim = '|',
+    col_names = c('empty1', var_descriptions, 'empty2')
+  ) |>
+    # read_delim sees the leading and trailing |'s as marking empty columns. remove those columns
+    dplyr::select(-empty1,-empty2) |>
+    # remove leading or trailing whitespace
+    dplyr::mutate_all(stringr::str_squish) |>
+    # remove that last row
+    dplyr::slice(1:dplyr::n() - 1)
+
+  if(length(col_names) == length(var_descriptions)){
+    names(d) <- col_names
+  }
+
+  return(d)
 
 }
