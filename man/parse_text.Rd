@@ -20,7 +20,7 @@ parse_text(
 
 \item{var_descriptions}{A list of descriptions for each variable in the dataframe.}
 
-\item{col_names}{Optional: A list of column names for the resulting dataframe. If not provided, var_descriptions will be used for column names.}
+\item{col_names}{Optional: A list of column names for the resulting dataframe. Must be the same length as the list of variable descriptions. If not provided, var_descriptions will be used for column names.}
 
 \item{model}{Which model variant of GPT-3 to use. Defaults to 'text-davinci-003'}
 
