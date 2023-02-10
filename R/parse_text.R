@@ -43,7 +43,7 @@ parse_text <- function(text,
   # query the API
   response <- openai$Completion$create(
     engine = model,
-    prompt = paste0(instructions, "\n\n", text, "\n\n", paste0('| ', var_descriptions, ' ', collapse = ''), "|\n|",
+    prompt = paste0(instructions, "\n---\n", text, "\n---\n\n", paste0('| ', var_descriptions, ' ', collapse = ''), "|\n|",
                     paste0( rep(' --- |', length(var_descriptions)), collapse = ''), "\n"),
     temperature = as.integer(0),
     max_tokens = as.integer(1000)
