@@ -8,7 +8,7 @@ setup_openai <- function(method = "auto", conda = "auto") {
 
   # if the python module is not installed, install it
   if(!reticulate::py_module_available('openai')){
-    reticulate::py_install("openai", method = method, conda = conda)
+    reticulate::py_install("openai", method = method, conda = conda, pip = TRUE)
   }
 
 }
