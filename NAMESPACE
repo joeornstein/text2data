@@ -3,3 +3,4 @@
 export(classify_text)
 export(clean_ocr)
 export(parse_text)
+export(setup_openai)

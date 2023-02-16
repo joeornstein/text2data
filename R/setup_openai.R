@@ -4,6 +4,7 @@
 #'
 #' @param method Method for installing python package (see reticulate::py_install)
 #' @param conda Use conda? (see reticulate::py_install)
+#' @export
 setup_openai <- function(method = "auto", conda = "auto") {
 
   # if the python module is not installed, install it
