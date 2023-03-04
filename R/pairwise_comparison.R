@@ -45,14 +45,13 @@ pairwise_comparison <- function(A, B,
     logprobs[i] <- response$choices[[1]]$logprobs$top_logprobs[[1]]$get(keys[i])
   }
 
-  d <- data.frame(response = stringr::str_squish(keys),
+  # tidy the dataframe
+  data.frame(response = stringr::str_squish(keys),
                   prob = exp(logprobs)) |>
     dplyr::filter(response %in% c('A', 'B')) |>
     dplyr::mutate(response = factor(response, level = c('A', 'B'))) |>
     dplyr::group_by(response, .drop = FALSE) |>
     dplyr::summarize(prob = sum(prob)) |>
     dplyr::ungroup()
-
-  return(d)
 
 }
