@@ -1,3 +1,18 @@
+#' Pairwise Comparison With GPT-3
+#'
+#' @param A The first text to compare
+#' @param B The second text to compare
+#' @param instructions Instructions to be included in the GPT-3 prompt (format them like you would format instructions to a human research assistant).
+#' @param model Which model variant of GPT-3 to use. Defaults to 'text-davinci-003'
+#' @param openai_api_key Your API key. By default, looks for a system environment variable called "OPENAI_API_KEY" (recommended option). Otherwise, it will prompt you to enter the API key as an argument.
+#'
+#' @return A dataframe with the probabilities that GPT-3 assigns to options A and B
+#' @export
+#'
+#' @examples
+#' pairwise_comparison(A = 'I am so very sad today',
+#'                     B = 'I am so very happy today.',
+#'                     instructions = 'Decide which of the following texts is more negative in sentiment.')
 pairwise_comparison <- function(A, B,
                                 instructions = 'Decide which of the following texts is more negative in sentiment.',
                                 model = 'text-davinci-003',
