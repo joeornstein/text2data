@@ -19,7 +19,7 @@ clean_ocr <- function(text,
 
   openai <- reticulate::import("openai")
 
-  if(is.null(openai_api_key)){
+  if(is.null(openai_api_key) | Sys.getenv('OPENAI_API_KEY') == ''){
     stop("No API key detected in system environment. You can enter it manually using the 'openai_api_key' argument.")
   } else{
     openai$api_key = openai_api_key
