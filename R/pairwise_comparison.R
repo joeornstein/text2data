@@ -6,7 +6,7 @@
 #' @param model Which model variant of GPT-3 to use. Defaults to 'text-davinci-003'
 #' @param openai_api_key Your API key. By default, looks for a system environment variable called "OPENAI_API_KEY" (recommended option). Otherwise, it will prompt you to enter the API key as an argument.
 #'
-#' @return A dataframe with the probabilities that GPT-3 assigns to options A and B
+#' @return The probability GPT-3 chooses Option A
 #' @export
 #'
 #' @examples
@@ -52,6 +52,10 @@ pairwise_comparison <- function(A, B,
     dplyr::mutate(response = factor(response, level = c('A', 'B'))) |>
     dplyr::group_by(response, .drop = FALSE) |>
     dplyr::summarize(prob = sum(prob)) |>
-    dplyr::ungroup()
+    dplyr::ungroup() |>
+    # convert to proper probability (sums to 1)
+    dplyr::mutate(prob = prob / sum(prob)) |>
+    dplyr::filter(response == 'A') |>
+    dplyr::pull(prob)
 
 }
