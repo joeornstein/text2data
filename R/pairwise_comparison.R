@@ -33,7 +33,8 @@ pairwise_comparison <- function(A, B,
   d <- data.frame(response = stringr::str_squish(keys),
                   prob = exp(logprobs)) |>
     dplyr::filter(response %in% c('A', 'B')) |>
-    dplyr::group_by(response) |>
+    dplyr::mutate(response = factor(response, level = c('A', 'B'))) |>
+    dplyr::group_by(response, .drop = FALSE) |>
     dplyr::summarize(prob = sum(prob)) |>
     dplyr::ungroup()
 
