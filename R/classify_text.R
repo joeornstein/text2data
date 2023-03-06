@@ -51,7 +51,7 @@ classify_text <- function(text,
   # query the API
   response <- openai$Completion$create(
     engine = model,
-    prompt = paste0(instructions, "\n---\n", text, "\nClassification: "),
+    prompt = paste0(instructions, "\n---\n", text, "\nClassification:"),
     max_tokens = as.integer(1),
     logprobs = as.integer(5),
     temperature = as.integer(0)
