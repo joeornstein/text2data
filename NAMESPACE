@@ -2,6 +2,7 @@
 
 export(classify_text)
 export(clean_ocr)
+export(complete_prompt)
 export(pairwise_comparison)
 export(parse_text)
 export(setup_openai)
