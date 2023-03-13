@@ -24,7 +24,7 @@ pairwise_comparison(
 \item{openai_api_key}{Your API key. By default, looks for a system environment variable called "OPENAI_API_KEY" (recommended option). Otherwise, it will prompt you to enter the API key as an argument.}
 }
 \value{
-The probability GPT-3 chooses Option A
+A character (A or B)
 }
 \description{
 Pairwise Comparison With GPT-3
