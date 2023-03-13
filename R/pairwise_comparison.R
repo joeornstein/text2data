@@ -30,7 +30,7 @@ pairwise_comparison <- function(A, B,
   # query the API
   response <- openai$Completion$create(
     engine = model,
-    prompt = paste0(instructions, '\n---\nA. ', A, '\nB. ', B, '\n---\nResponse:'),
+    prompt = paste0(instructions, '\n---\nA. ', A, '\n\nB. ', B, '\n---\nResponse:'),
     max_tokens = as.integer(1),
     logprobs = as.integer(5),
     temperature = as.integer(0)
