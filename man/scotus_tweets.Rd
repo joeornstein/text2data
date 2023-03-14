@@ -16,12 +16,15 @@ A data frame with 945 rows and 5 columns:
 data(scotus_tweets)
 }
 \description{
-This dataset contains 945 tweets referencing the Supreme Court,
-collected between XXXX and YYYY, along with expert-coded sentiment
-scores.
+This dataset contains 945 tweets referencing the US Supreme Court.
+Roughly half were collected on June 4, 2018 following the \emph{Masterpiece Cakeshop}
+ruling, and the other half were collected on July 9, 2020 following the
+Court's concurrently released opinions in \emph{Trump v. Mazars} and \emph{Trump v. Vance}.
+Each tweet includes three independent human-coded sentiment scores (-1 to +1).
 }
-\examples{
-data(scotus_tweets)
+\details{
+CONTENT WARNING: These texts come from social media, and many contain explicit
+or offensive language.
 }
 \references{
 Ornstein et al. (2022). "How To Train Your Stochastic Parrot"

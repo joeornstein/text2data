@@ -16,7 +16,7 @@ data(scotus_tweets_examples)
 }
 \description{
 This dataset contains 5 example tweets referencing the Supreme Court
-along with a sentiment label. These can be used as few-shot learning
+along with a sentiment label. These can be used as few-shot prompting
 examples for classifying tweets in the \code{scotus_tweets} dataset.
 }
 \references{
