@@ -18,6 +18,7 @@
 #' \describe{
 #'  \item{tweet_id}{A unique ID}
 #'  \item{text}{The text of the tweet}
+#'  \item{case}{An identifier denoting which Supreme Court ruling the tweet was collected after.}
 #'  \item{expert1, expert2, expert3}{Hand-coded sentiment score (-1 = negative, 0 = neutral, 1 = positive)}
 #' }
 #'
