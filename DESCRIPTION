@@ -1,10 +1,10 @@
 Package: text2data
-Title: Convert Plain Text To Datasets
+Title: Convert plain text to datasets
 Version: 0.0.0.9000
 Authors@R: 
     person("Joe", "Ornstein", , "jornstein@uga.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5704-2098"))
-Description: A package for R users to interact with OpenAI's GPT-3 Python module. Includes handy functions for classifying texts according to user-defined functions, as well as converting plain text into structured datasets.
+Description: The `text2data` package allows R users to interact with OpenAI's GPT-3 API. Includes handy functions for classifying texts according to user-defined functions, as well as converting plain text into structured datasets.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
