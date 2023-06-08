@@ -43,25 +43,13 @@ complete_prompt <- function(prompt,
     # if user requests 1 token (default), return the vector of next word predictions
     # and their associated log probabilities
 
-    response$choices[[1]]$logprobs$top_logprobs[[1]] |>
-      as_tibble() |>
-      pivot_longer(cols = everything(),
-                   names_to = 'response',
-                   values_to = 'prob') |>
-      mutate(prob = exp(prob))
+    # convert the list of log probabilities into a dataframe
+    keys <- names(response$choices[[1]]$logprobs$top_logprobs[[1]])
 
-    # Old code: keeping it here until the next version update
-    # # convert the dictionary of log probabilities into a dataframe
-    # keys <- names(response$choices[[1]]$logprobs$top_logprobs[[1]])
-    #
-    # logprobs <- numeric(length(keys))
-    #
-    # for(i in 1:length(keys)){
-    #   logprobs[i] <- response$choices[[1]]$logprobs$top_logprobs[[1]]$get(keys[i])
-    # }
-    #
-    # data.frame(response = keys,
-    #            prob = exp(logprobs))
+    logprobs <- as.numeric(response$choices[[1]]$logprobs$top_logprobs[[1]])
+
+    data.frame(response = keys,
+               prob = exp(logprobs))
   }
 
 }
