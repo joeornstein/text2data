@@ -21,7 +21,7 @@ pairwise_comparison <- function(A, B,
 
   openai <- reticulate::import("openai")
 
-  if(is.null(openai_api_key) | Sys.getenv('OPENAI_API_KEY') == ''){
+  if(openai_api_key == ''){
     stop("No API key detected in system environment. You can enter it manually using the 'openai_api_key' argument.")
   } else{
     openai$api_key = openai_api_key
