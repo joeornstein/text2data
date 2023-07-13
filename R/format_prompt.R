@@ -28,7 +28,7 @@ format_prompt <- function(text,
                           template = 'Text: {text}\nClassification: {label}',
                           prompt_template = '{instructions}{examples}{input}',
                           separator = '\n\n'){
-
+  
   # convert examples dataframe to string
   if(nrow(examples) == 0){
     examples <- ''
@@ -39,19 +39,19 @@ format_prompt <- function(text,
       paste(collapse = separator) |>
       paste0(separator)
   }
-
+  
   # add separator to instructions
   if(nchar(instructions) > 0){
     instructions <- paste0(instructions, separator)
   }
-
+  
   # format input using template (removing the {label} tag and anything after it)
   input <- template |>
     stringr::str_replace('\\{label\\}.*', '') |>
     stringr::str_trim() |>
     glue::glue()
-
+  
   # glue together the complete prompt template
   glue::glue(prompt_template)
-
+  
 }

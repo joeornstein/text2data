@@ -2,13 +2,13 @@
 % Please edit documentation in R/pairwise_comparison.R
 \name{pairwise_comparison}
 \alias{pairwise_comparison}
-\title{Pairwise Comparison With GPT-3}
+\title{Pairwise Comparison With GPT}
 \usage{
 pairwise_comparison(
   A,
   B,
   instructions = "Decide which of the following texts is more negative in sentiment.",
-  model = "text-davinci-003",
+  model = "gpt-3.5-turbo",
   openai_api_key = Sys.getenv("OPENAI_API_KEY")
 )
 }
@@ -17,9 +17,9 @@ pairwise_comparison(
 
 \item{B}{The second text to compare}
 
-\item{instructions}{Instructions to be included in the GPT-3 prompt (format them like you would format instructions to a human research assistant).}
+\item{instructions}{Instructions to be included in the GPT prompt (format them like you would format instructions to a human research assistant).}
 
-\item{model}{Which model variant of GPT-3 to use. Defaults to 'text-davinci-003'}
+\item{model}{Which model variant of GPT to use. Defaults to 'gpt-3.5-turbo'}
 
 \item{openai_api_key}{Your API key. By default, looks for a system environment variable called "OPENAI_API_KEY" (recommended option). Otherwise, it will prompt you to enter the API key as an argument.}
 }
@@ -27,7 +27,7 @@ pairwise_comparison(
 A character (A or B)
 }
 \description{
-Pairwise Comparison With GPT-3
+Pairwise Comparison With GPT
 }
 \examples{
 pairwise_comparison(A = 'I am so very sad today',
