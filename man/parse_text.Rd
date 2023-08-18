@@ -7,9 +7,8 @@
 parse_text(
   text,
   instructions,
-  var_descriptions,
-  col_names = character(0),
-  model = "text-davinci-003",
+  col_names,
+  model = "gpt-3.5-turbo",
   openai_api_key = Sys.getenv("OPENAI_API_KEY")
 )
 }
@@ -18,23 +17,20 @@ parse_text(
 
 \item{instructions}{Instructions to be included in the GPT-3 prompt (format them like you would format instructions to a human research assistant, in as much detail as possible).}
 
-\item{var_descriptions}{A list of descriptions for each variable in the dataframe.}
+\item{col_names}{A list of column names for each variable in the dataframe.}
 
-\item{col_names}{Optional: A list of column names for the resulting dataframe. Must be the same length as the list of variable descriptions. If not provided, var_descriptions will be used for column names.}
-
-\item{model}{Which model variant of GPT-3 to use. Defaults to 'text-davinci-003'}
+\item{model}{Which model variant of GPT-3 to use. Defaults to 'gpt-3.5-turbo'}
 
 \item{openai_api_key}{Your API key. By default, looks for a system environment variable called "OPENAI_API_KEY" (recommended option). Otherwise, it will prompt you to enter the API key as an argument.}
 }
 \value{
-A dataframe with a number of columns equal to \code{ncol(var_descriptions)}
+A dataframe with a number of columns equal to \code{ncol(col_names)}
 }
 \description{
-Constructs a GPT-3 prompt to parse data from unstructured text according to the user's instructions.
+Constructs a data table from unstructured text according to the user's instructions.
 }
 \examples{
 parse_text(text = "John went to the store. Rosie ran errands at the mall.",
            instructions = "Create a dataset from the following passage with the names of each character and the place they went.",
-           var_descriptions = c("Name of Character", "Where They Went"),
-           col_names = c('name', 'destination') )
+           col_names = c("Name of Character", "Where They Went"))
 }
