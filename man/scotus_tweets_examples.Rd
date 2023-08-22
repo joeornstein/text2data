@@ -5,9 +5,11 @@
 \alias{scotus_tweets_examples}
 \title{Labelled Example Tweets About The Supreme Court of the United States}
 \format{
-A data frame with 5 rows and 2 columns:
+A data frame with 12 rows and 4 columns:
 \describe{
+\item{tweet_id}{A unique ID for each tweet}
 \item{text}{The text of the tweet}
+\item{case}{The case referenced in the tweet (Masterpiece Cakeshop or Trump v. Mazars)}
 \item{label}{The "true" label (Positive, Negative, or Neutral)}
 }
 }
@@ -15,7 +17,7 @@ A data frame with 5 rows and 2 columns:
 data(scotus_tweets_examples)
 }
 \description{
-This dataset contains 5 example tweets referencing the Supreme Court
+This dataset contains 12 example tweets referencing the Supreme Court
 along with a sentiment label. These can be used as few-shot prompting
 examples for classifying tweets in the \code{scotus_tweets} dataset.
 }
