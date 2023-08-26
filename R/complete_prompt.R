@@ -1,7 +1,7 @@
 #' Complete a Custom GPT-3 Prompt
 #'
 #' @param prompt The prompt to use as input for GPT-3
-#' @param model  Which model variant of GPT-3 to use. Defaults to 'text-davinci-003'
+#' @param model  Which model variant of GPT-3 to use. Defaults to 'davinci-002'
 #' @param openai_api_key Your API key. By default, looks for a system environment variable called "OPENAI_API_KEY" (recommended option). Otherwise, it will prompt you to enter the API key as an argument.
 #' @param max_tokens How many tokens (roughly 4 characters of text) should GPT-3 return? Defaults to a single token (next word prediction).
 #' @param temperature A number between 0 and 100. When set to zero, GPT-3 will always return the most probable next token. When set higher, GPT-3 will select the next word probabilistically.
@@ -13,7 +13,7 @@
 #' complete_prompt('I feel like a')
 #' complete_prompt('Write a haiku about frogs.', max_tokens = 100)
 complete_prompt <- function(prompt,
-                            model = 'text-davinci-003',
+                            model = 'davinci-002',
                             openai_api_key = Sys.getenv('OPENAI_API_KEY'),
                             max_tokens = 1,
                             temperature = 0) {

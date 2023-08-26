@@ -6,7 +6,7 @@
 \usage{
 complete_prompt(
   prompt,
-  model = "text-davinci-003",
+  model = "davinci-002",
   openai_api_key = Sys.getenv("OPENAI_API_KEY"),
   max_tokens = 1,
   temperature = 0
@@ -15,7 +15,7 @@ complete_prompt(
 \arguments{
 \item{prompt}{The prompt to use as input for GPT-3}
 
-\item{model}{Which model variant of GPT-3 to use. Defaults to 'text-davinci-003'}
+\item{model}{Which model variant of GPT-3 to use. Defaults to 'davinci-002'}
 
 \item{openai_api_key}{Your API key. By default, looks for a system environment variable called "OPENAI_API_KEY" (recommended option). Otherwise, it will prompt you to enter the API key as an argument.}
 
