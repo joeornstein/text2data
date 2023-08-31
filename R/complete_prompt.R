@@ -28,28 +28,46 @@ complete_prompt <- function(prompt,
   }
 
   # query the API
-  response <- openai$Completion$create(
-    engine = model,
-    prompt = prompt,
-    logprobs = ifelse(max_tokens == 1, as.integer(5), as.integer(1)),
-    max_tokens = as.integer(max_tokens),
-    temperature = as.integer(temperature)
-  )
 
-  # if user requests more than one token, returns a single autoregressively generated response from GPT-3
-  if(max_tokens > 1){
-    return(response$choices[[1]]$text)
+  if(model %in% c('gpt-3.5-turbo', 'gpt-3.5-turbo-16k')){
+    # for Chat Endpoint, embed the prompt in a "messages" dictionary object
+    messages <- reticulate::dict(role = 'user',
+                                 content = prompt)
+
+    # query the API
+    response <- openai$ChatCompletion$create(model = model,
+                                             messages = c(messages),
+                                             temperature = as.integer(temperature),
+                                             max_tokens = as.integer(max_tokens))
+
+    return(response$choices[[1]]$message$content)
+
   } else{
-    # if user requests 1 token (default), return the vector of next word predictions
-    # and their associated log probabilities
 
-    # convert the list of log probabilities into a dataframe
-    keys <- names(response$choices[[1]]$logprobs$top_logprobs[[1]])
+    response <- openai$Completion$create(
+      engine = model,
+      prompt = prompt,
+      logprobs = ifelse(max_tokens == 1, as.integer(5), as.integer(1)),
+      max_tokens = as.integer(max_tokens),
+      temperature = as.integer(temperature)
+    )
 
-    logprobs <- as.numeric(response$choices[[1]]$logprobs$top_logprobs[[1]])
+    # if user requests more than one token, returns a single autoregressively generated response from GPT-3
+    if(max_tokens > 1){
+      return(response$choices[[1]]$text)
+    } else{
+      # if user requests 1 token (default), return the vector of next word predictions
+      # and their associated log probabilities
 
-    data.frame(response = keys,
-               prob = exp(logprobs))
+      # convert the list of log probabilities into a dataframe
+      keys <- names(response$choices[[1]]$logprobs$top_logprobs[[1]])
+
+      logprobs <- as.numeric(response$choices[[1]]$logprobs$top_logprobs[[1]])
+
+      data.frame(response = keys,
+                 prob = exp(logprobs))
+    }
+
   }
 
 }
