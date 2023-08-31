@@ -14,7 +14,7 @@
 #' clean_ocr(text = "John wenf to the snore. Rosie ran ercands at the mal.")
 clean_ocr <- function(text,
                       instructions = 'Correct the OCR errors.',
-                      model = 'text-davinci-003',
+                      model = 'gpt-3.5-turbo',
                       openai_api_key = Sys.getenv('OPENAI_API_KEY')){
 
   openai <- reticulate::import("openai")
@@ -26,12 +26,26 @@ clean_ocr <- function(text,
   }
 
   # query the API
-  response <- openai$Completion$create(
-    engine = model,
-    prompt = paste0(instructions, "\n---\n", text, "\n---\n"),
-    temperature = as.integer(0),
-    max_tokens = as.integer(2000)
-  )
+  if(model %in% c('gpt-3.5-turbo', 'gpt-3.5-turbo-16k')){
+    # for Chat Endpoint, embed the prompt in a "messages" dictionary object
+    messages <- reticulate::dict(role = 'user',
+                                 content = paste0(instructions, "\n---\n", text, "\n---\n"))
+
+    # query the API
+    response <- openai$ChatCompletion$create(model = model,
+                                             messages = c(messages),
+                                             temperature = as.integer(0),
+                                             max_tokens = as.integer(2000))
+
+  } else{
+    response <- openai$Completion$create(
+      engine = model,
+      prompt = paste0(instructions, "\n---\n", text, "\n---\n"),
+      temperature = as.integer(0),
+      max_tokens = as.integer(2000)
+    )
+
+  }
 
   return(response$choices[[1]]$text)
 

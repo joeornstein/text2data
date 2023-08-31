@@ -7,7 +7,7 @@
 clean_ocr(
   text,
   instructions = "Correct the OCR errors.",
-  model = "text-davinci-003",
+  model = "gpt-3.5-turbo",
   openai_api_key = Sys.getenv("OPENAI_API_KEY")
 )
 }
