@@ -22,6 +22,6 @@ along with a sentiment label. These can be used as few-shot prompting
 examples for classifying tweets in the \code{scotus_tweets} dataset.
 }
 \references{
-Ornstein et al. (2022). "How To Train Your Stochastic Parrot"
+Ornstein et al. (2023). "How To Train Your Stochastic Parrot"
 }
 \keyword{datasets}

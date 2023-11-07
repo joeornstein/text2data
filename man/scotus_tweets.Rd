@@ -28,6 +28,6 @@ CONTENT WARNING: These texts come from social media, and many contain explicit
 or offensive language.
 }
 \references{
-Ornstein et al. (2022). "How To Train Your Stochastic Parrot"
+Ornstein et al. (2023). "How To Train Your Stochastic Parrot"
 }
 \keyword{datasets}

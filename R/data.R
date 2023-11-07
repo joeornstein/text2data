@@ -24,7 +24,7 @@
 #'
 #' @keywords datasets
 #'
-#' @references Ornstein et al. (2022). "How To Train Your Stochastic Parrot"
+#' @references Ornstein et al. (2023). "How To Train Your Stochastic Parrot"
 "scotus_tweets"
 
 
@@ -49,5 +49,49 @@
 #'
 #' @keywords datasets
 #'
-#' @references Ornstein et al. (2022). "How To Train Your Stochastic Parrot"
+#' @references Ornstein et al. (2023). "How To Train Your Stochastic Parrot"
 "scotus_tweets_examples"
+
+#' Occupations
+#'
+#' This dataset contains 3,948 ballot designations from municipal elections in California.
+#' A random subset are hand-labeled as either "Working Class" or "Not Working Class" occupations.
+#'
+#' @docType data
+#'
+#' @usage data(occupations)
+#'
+#' @format
+#' A data frame with 3948 rows and 2 columns:
+#' \describe{
+#'  \item{baldesig}{Ballot designation as it appears in the CEDA dataset}
+#'  \item{hand_coded}{A hand-coded occupation classification (for a random subset)}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @references California Elections Data Archive (CEDA). https://hdl.handle.net/10211.3/210187
+"occupations"
+
+
+#' Labelled Occupations
+#'
+#' This dataset contains 9 example occupations
+#' along with a classification. These can be used as few-shot
+#' examples for classifying occupations in the `occupations` dataset.
+#'
+#' @docType data
+#'
+#' @usage data(occupations_examples)
+#'
+#' @format
+#' A data frame with 9 rows and 2 columns:
+#' \describe{
+#'  \item{text}{The text of the ballot designation}
+#'  \item{label}{The hand-coded label (Working Class, Not Working Class, NA)}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @references California Elections Data Archive (CEDA). https://hdl.handle.net/10211.3/210187
+"occupations_examples"

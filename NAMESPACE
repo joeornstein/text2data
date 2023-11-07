@@ -2,6 +2,7 @@
 
 export(clean_ocr)
 export(complete_prompt)
+export(format_chat_prompt)
 export(format_prompt)
 export(pairwise_comparison)
 export(parse_text)
