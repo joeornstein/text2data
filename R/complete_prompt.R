@@ -30,9 +30,21 @@ complete_prompt <- function(prompt,
   # query the API
 
   if(model %in% c('gpt-3.5-turbo', 'gpt-3.5-turbo-16k')){
+
     # for Chat Endpoint, embed the prompt in a "messages" dictionary object
-    messages <- reticulate::dict(role = 'user',
-                                 content = prompt)
+    if(!is.character(prompt) & !is.list(prompt)){
+      stop('For chat completions, please ensure that the prompt input is either a character object or a list formatted by text2data::format_chat_prompt().')
+    }
+
+    if(is.character(prompt)){
+      messages <- reticulate::dict(role = 'user',
+                                   content = prompt)
+    }
+
+    if(is.list(prompt)){
+      messages <- sapply(prompt, reticulate::dict)
+    }
+
 
     # query the API
     response <- openai$ChatCompletion$create(model = model,
